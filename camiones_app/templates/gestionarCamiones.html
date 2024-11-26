@@ -1,0 +1,92 @@
+    {% extends "base.html" %}
+    {% load static %}
+
+    {% block cuerpo %}
+
+    <div class="row"><!-- la fila -->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+
+    <h1>Camion</h1>
+    <div class="card"><!-- La tarjeta --> 
+    <div class="card-body">
+        <form action="registrarCamion/" method="POST"> {% csrf_token %}<!-- falta action --> 
+        <div class="form-group">
+            <input type="text" id="txtidcamion" name="txtidcamion" class="form-control" 
+            placeholder="Id Camion" minlenght="1" maxlenght="6" required>
+        </div>
+        <div class="form-group py-3">
+            <input type="text" id="txtmatricula" name="txtmatricula" class="form-control" 
+            placeholder="Matricula del Camion" maxlenght="100" required>
+        </div>
+        <div class="form-group py-3">
+            <input type="text" id="txtmodelo" name="txtmodelo" class="form-control" 
+            placeholder="Modelo del Camion" maxlenght="50" required>
+        </div>
+        <div class="form-group py-3">
+            <input type="text" id="txtmarca" name="txtmarca" class="form-control" 
+            placeholder="Marca del Camion" maxlenght="50" required>
+        </div>
+        <div class="form-group py-3">
+            <input type="text" id="txtpasajeros" name="txtpasajeros" class="form-control" 
+            placeholder="Capacidad de Pasajeros" maxlenght="50" required>
+        </div>
+        <div class="form-group py-3">
+            <input type="text" id="txtestado" name="txtestado" class="form-control" 
+            placeholder="Estado del Camion" maxlenght="50" required>
+        </div>
+        <div class="form-group py-2">
+            <input type="text" id="txtmotor" name="txtmotor" class="form-control" 
+            placeholder="Tipo de motor" maxlenght="50" required>
+        </div>
+        <div class="form-group py-2">
+            <button type="submit" class="btn btn-primary">Guardar Camion</button>
+        </div>
+
+
+        </form>
+    </div>
+    </div><!-- La tarjeta --> 
+
+    </div><!-- columna izquierda --> 
+
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--columna derecha-->
+        <h1> 
+            Listado de camiones
+        </h1>
+        <img class="w-50" src="{% static 'img/unidades.jpg' %}" alt="najera" width="200" height="200"> </img>
+        <!--  la tabla   -->
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Id Camion</th>
+                    <th scope="col">Matricula</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Capacidad Pasajeros</th>
+                    <th scope="col">Estado del Camion</th>
+                    <th scope="col">Tipo de Motor</th>
+                    <th> Opciones </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for m in miscamiones %}
+                <tr>
+                    <td> {{forloop.counter}} </td>
+                    <td> {{m.id_camion}} </td>
+                    <td> {{m.Matricula}} </td>
+                    <td> {{m.Modelo}} </td>
+                    <td> {{m.Marca}} </td>
+                    <td> {{m.Capacidadpasajeros}} </td>
+                    <td> {{m.Estadodelcamion}} </td>
+                    <td> {{m.Tipodemotor}} </td>
+                    <td> <a href="seleccionarCamion/{{m.id_camion}}" class="btn btn-info" >Editar</a></td><!--Falta-->
+                    <td> <a href="borrarCamion/{{m.id_camion}}" class="btn btn-danger" >Borrar</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <!--  la tabla   -->
+        <div><!--columna derecha-->
+        </div><!-- la fila -->
+    {% endblock %}

@@ -1,0 +1,55 @@
+    {% extends "base.html" %}
+
+    {% block cuerpo %}
+
+    <div class="row"><!--fila en editar-->
+        <div class="col-md-4 offset-md-4">
+            <h2>Editar Camion</h2>
+            <!--Aqui codigo tarjeta-->
+            <div class="card"><!-- La tarjeta --> 
+                <div class="card-body">
+                <form action="/editarCamion/" method="POST"> {% csrf_token %}<!-- falta action --> 
+                    <div class="form-group">
+                    <input type="text" id="txtidcamion" name="txtidcamion" class="form-control"
+                    value="{{miscamiones.id_camion}}" 
+                    minlenght="1" maxlenght="6" readonly required>
+                    </div>
+                    <div class="form-group py-3">
+                    <input type="text" id="txtmatricula" name="txtmatricula" class="form-control" 
+                    value="{{miscamiones.Matricula}}" maxlenght="50"  required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtmodelo" name="txtmodelo" class="form-control" 
+                        value="{{miscamiones.Modelo}}" maxlenght="50" required>
+                        </div>
+                        <div class="form-group py-3">
+                            <input type="text" id="txtmarca" name="txtmarca" class="form-control" 
+                            value="{{miscamiones.Marca}}" maxlenght="50" required>
+                            </div>
+                            <div class="form-group py-3">
+                                <input type="text" id="txtpasajeros" name="txtpasajeros" class="form-control" 
+                                value="{{miscamiones.Capacidadpasajeros}}" maxlenght="50" required>
+                                </div>
+                                <div class="form-group py-3">
+                                    <input type="text" id="txtestado" name="txtestado" class="form-control" 
+                                    value="{{miscamiones.Estadodelcamion}}" maxlenght="50"  required>
+                                    </div>
+                                    <div class="form-group py-3">
+                                        <input type="text" id="txtmotor" name="txtmotor" class="form-control" 
+                                        value="{{miscamiones.Tipodemotor}}" maxlenght="50" required>
+                                        </div>
+
+                    <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar Camion</button>
+                    </div>
+            
+            
+                </form>
+                </div>
+            </div><!-- La tarjeta --> 
+            <!--Aqui codigo tarjeta-->
+        </div>
+
+    </div><!--fila en editar-->
+
+    {% endblock  %}
